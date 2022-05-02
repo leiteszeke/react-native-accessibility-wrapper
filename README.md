@@ -1,21 +1,37 @@
-# react-native-accessibility-wrapper
+# React Native Accessibility Wrapper
 
-An accessibility wrapper for iOS
+A wrapper for iOS that works as a View and allows you to set the order that elements should be read by Voice Over
 
 ## Installation
 
 ```sh
+# Using npm
 npm install react-native-accessibility-wrapper
+
+# Using yarn
+yarn add react-native-accessibility-wrapper
+
+# Install pods
+cd ios && pod install && cd ..
 ```
 
 ## Usage
 
-```js
-import { AccessibilityWrapperView } from "react-native-accessibility-wrapper";
+```typescriptreact
+import { Text } from 'react-native';
+import Icon from 'your-icon-library';
+import AccessibilityWrapper from "react-native-accessibility-wrapper";
 
-// ...
+<AccessibilityWrapper
+  style={{ flex: 1, flexDirection: 'row' }}
+  elements={[titleRef, leftIconRef, rightIconRef]}
+>
+  <Icon ref={leftIconRef} name="back" />
 
-<AccessibilityWrapperView color="tomato" />
+  <Text ref={titleRef}>Title</Text>
+
+  <Icon ref={rightIconRef} name="save" />
+</AccessibilityWrapper>
 ```
 
 ## Contributing

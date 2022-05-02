@@ -1,25 +1,79 @@
-import * as React from 'react';
-
-import { StyleSheet, View } from 'react-native';
-import { AccessibilityWrapperView } from 'react-native-accessibility-wrapper';
+import React, { useRef } from 'react';
+import {
+  StyleSheet,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  View,
+} from 'react-native';
+import AccessibilityWrapper from 'react-native-accessibility-wrapper';
+import { Icon } from 'react-native-eva-icons';
+import Input from './Input';
 
 export default function App() {
+  const iconRef = useRef<TouchableOpacity>(null);
+  const inputRef = useRef<TextInput>(null);
+
   return (
-    <View style={styles.container}>
-      <AccessibilityWrapperViewManager color="#32a852" style={styles.box} />
-    </View>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <Text accessibilityRole="header" style={styles.title}>
+          Accessibility Wrapper
+        </Text>
+
+        <AccessibilityWrapper elements={[inputRef, iconRef]}>
+          <View style={styles.inputWrapper}>
+            <Input
+              secureTextEntry={true}
+              ref={inputRef}
+              placeholder="Password"
+              autoCorrect={false}
+              autoCapitalize="none"
+            />
+            <TouchableOpacity
+              style={styles.icon}
+              ref={iconRef}
+              accessibilityLabel="Show password"
+              accessibilityRole="button"
+            >
+              <Icon
+                fill="#000000"
+                name={'eye-off-outline'}
+                height={20}
+                width={20}
+              />
+            </TouchableOpacity>
+          </View>
+        </AccessibilityWrapper>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 12,
   },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+  title: {
+    fontWeight: 'bold',
+    fontSize: 24,
+    marginBottom: 12,
+  },
+
+  inputWrapper: {
+    alignItems: 'center',
+    borderColor: '#CCCCCC',
+    borderRadius: 8,
+    borderWidth: 1,
+    height: 50,
+    flexDirection: 'row',
+  },
+  icon: {
+    padding: 10,
   },
 });

@@ -1,9 +1,8 @@
-import {
-  requireNativeComponent,
-  UIManager,
-  Platform,
-  ViewStyle,
-} from 'react-native';
+import React from 'react';
+import { UIManager, Platform, View } from 'react-native';
+import AccessibilityWrapper, {
+  AccessibilityWrapperProps,
+} from './AccessibilityWrapper';
 
 const LINKING_ERROR =
   `The package 'react-native-accessibility-wrapper' doesn't seem to be linked. Make sure: \n\n` +
@@ -11,16 +10,18 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo managed workflow\n';
 
-type AccessibilityWrapperProps = {
-  color: string;
-  style: ViewStyle;
-};
-
-const ComponentName = 'AccessibilityWrapperView';
+const ComponentName = 'AccessibilityWrapper';
 
 export const AccessibilityWrapperView =
   UIManager.getViewManagerConfig(ComponentName) != null
-    ? requireNativeComponent<AccessibilityWrapperProps>(ComponentName)
+    ? (props: AccessibilityWrapperProps) =>
+        Platform.OS === 'ios' ? (
+          <AccessibilityWrapper {...props} />
+        ) : (
+          <View {...props} />
+        )
     : () => {
         throw new Error(LINKING_ERROR);
       };
+
+export default AccessibilityWrapperView;
