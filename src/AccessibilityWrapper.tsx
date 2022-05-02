@@ -24,7 +24,7 @@ class AccessibilityWrapperIOS extends React.Component<AccessibilityWrapperProps>
   public componentDidMount() {
     if (this.props.elements) {
       this.setAccessibilityFields(
-        this.props.elements.map((ref) => ref.current)
+        this.props.elements.map((el) => el.current).filter((el) => el)
       );
     }
   }
@@ -32,7 +32,7 @@ class AccessibilityWrapperIOS extends React.Component<AccessibilityWrapperProps>
   public componentDidUpdate() {
     if (this.props.elements) {
       this.setAccessibilityFields(
-        this.props.elements.map((ref) => ref.current)
+        this.props.elements.map((el) => el.current).filter((el) => el)
       );
     }
   }
@@ -43,6 +43,7 @@ class AccessibilityWrapperIOS extends React.Component<AccessibilityWrapperProps>
     const fieldTags =
       fields &&
       fields.map((component) => component && findNodeHandle(component));
+
     return AccessibilityWrapperManager.setAccessibilityFields(
       findNodeHandle(this.ref.current),
       fieldTags

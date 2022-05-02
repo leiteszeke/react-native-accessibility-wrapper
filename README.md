@@ -2,6 +2,8 @@
 
 A wrapper for iOS that works as a View and allows you to set the order that elements should be read by Voice Over
 
+---
+
 ## Installation
 
 ```sh
@@ -14,6 +16,8 @@ yarn add react-native-accessibility-wrapper
 # Install pods
 cd ios && pod install && cd ..
 ```
+
+---
 
 ## Usage
 
@@ -34,9 +38,15 @@ import AccessibilityWrapper from "react-native-accessibility-wrapper";
 </AccessibilityWrapper>
 ```
 
-## Contributing
+---
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+## Example
+
+| Without Wrapper | With Wrapper |
+|---|---|
+| ![without wrapper](./assets/without-wrapper.gif)  | ![with wrapper](./assets/with-wrapper.gif)   |
+
+---
 
 ## License
 
