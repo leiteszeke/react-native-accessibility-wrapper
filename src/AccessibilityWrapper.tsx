@@ -42,15 +42,18 @@ class AccessibilityWrapperIOS extends React.Component<AccessibilityWrapperProps>
   ) => {
     const fieldTags =
       fields &&
+      // @ts-ignore Upgrade later
       fields.map((component) => component && findNodeHandle(component));
 
     return AccessibilityWrapperManager.setAccessibilityFields(
+      // @ts-ignore Upgrade later
       findNodeHandle(this.ref.current),
       fieldTags
     );
   };
 
   public render() {
+    // @ts-ignore Upgrade later
     return <AccessibilityWrapper {...this.props} ref={this.ref} />;
   }
 }
