@@ -12,16 +12,20 @@ const LINKING_ERROR =
 
 const ComponentName = 'AccessibilityWrapper';
 
-export const AccessibilityWrapperView =
-  UIManager.getViewManagerConfig(ComponentName) != null
-    ? (props: AccessibilityWrapperProps) =>
-        Platform.OS === 'ios' ? (
-          <AccessibilityWrapper {...props} />
-        ) : (
-          <View {...props} />
-        )
-    : () => {
-        throw new Error(LINKING_ERROR);
-      };
+export const AccessibilityWrapperView = (props: AccessibilityWrapperProps) => {
+  const isComponentLinked =
+    UIManager.getViewManagerConfig(ComponentName) !== null;
+  const isIOS = Platform.OS === 'ios';
+
+  if (!isComponentLinked && isIOS) {
+    throw new Error(LINKING_ERROR);
+  }
+
+  if (isComponentLinked && isIOS) {
+    return <AccessibilityWrapper {...props} />;
+  } else {
+    return <View {...props} />;
+  }
+};
 
 export default AccessibilityWrapperView;
