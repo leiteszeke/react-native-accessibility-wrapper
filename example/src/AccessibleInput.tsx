@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, {useRef, useState} from 'react';
 import {
   StyleSheet,
   TextInput,
@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import AccessibilityWrapper from 'react-native-accessibility-wrapper';
-import { Icon } from 'react-native-eva-icons';
+import {Icon} from 'react-native-eva-icons';
 
 type AccessibleInputProps = Omit<TextInputProps, 'style'> & {
   accessibility?: {
@@ -26,7 +26,7 @@ const AccessibleInput = (props: AccessibleInputProps) => {
   const iconRef = useRef<TouchableOpacity>(null);
   const inputRef = useRef<TextInput>(null);
 
-  const togglePassword = () => setShowPassword((prev) => !prev);
+  const togglePassword = () => setShowPassword(prev => !prev);
 
   return (
     <AccessibilityWrapper style={styles.wrapper} elements={[inputRef, iconRef]}>
@@ -49,13 +49,12 @@ const AccessibleInput = (props: AccessibleInputProps) => {
           onPress={togglePassword}
           accessibilityLabel={props.accessibility?.icon?.label ?? ''}
           accessibilityHint={props.accessibility?.icon?.hint ?? ''}
-          accessibilityRole="button"
-        >
+          accessibilityRole="button">
           <Icon
-            fill="#000000"
-            name={showPassword ? 'eye-outline' : 'eye-off-outline'}
+            fill="black"
             height={20}
             width={20}
+            name={showPassword ? 'eye-outline' : 'eye-off-outline'}
           />
         </TouchableOpacity>
       )}

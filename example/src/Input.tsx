@@ -1,6 +1,6 @@
-import React, { forwardRef } from 'react';
+import React, {forwardRef} from 'react';
 
-import { StyleSheet, TextInput, View } from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 
 const Input = (props: any, ref: any) => {
   return (
@@ -12,8 +12,7 @@ const Input = (props: any, ref: any) => {
           ref={ref}
           style={styles.input}
           onSubmitEditing={props.onSubmitEditing}
-          returnKeyType={props.returnKeyType}
-        >
+          returnKeyType={props.returnKeyType}>
           {props.children}
         </TextInput>
       </View>

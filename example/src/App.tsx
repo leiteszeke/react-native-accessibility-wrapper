@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, Text, View } from 'react-native';
+import {StyleSheet, SafeAreaView, Text, View} from 'react-native';
 import AccessibleInput from './AccessibleInput';
 
 export default function App() {
@@ -13,7 +13,7 @@ export default function App() {
         <AccessibleInput
           placeholder="Password"
           autoCorrect={false}
-          // secureTextEntry
+          secureTextEntry
           autoCapitalize="none"
         />
       </View>

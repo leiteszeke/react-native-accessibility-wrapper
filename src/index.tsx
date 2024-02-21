@@ -23,9 +23,9 @@ export const AccessibilityWrapperView = (props: AccessibilityWrapperProps) => {
 
   if (isComponentLinked && isIOS) {
     return <AccessibilityWrapper {...props} />;
-  } else {
-    return <View {...props} />;
   }
+
+  return <View {...props} />;
 };
 
 export default AccessibilityWrapperView;

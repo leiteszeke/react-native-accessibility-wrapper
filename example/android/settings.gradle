@@ -1,6 +1,4 @@
-rootProject.name = 'AccessibilityWrapperExample'
+rootProject.name = 'example'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'
-
-include ':reactnativeaccessibilitywrapper'
-project(':reactnativeaccessibilitywrapper').projectDir = new File(rootProject.projectDir, '../../android')
+includeBuild('../node_modules/@react-native/gradle-plugin')
